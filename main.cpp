@@ -4,6 +4,8 @@
 #include <string>
 #include <cstdlib>
 #include <vector>
+#include <sstream>
+#include <algorithm>
 using namespace std;
 
 #define _CRT_SECURE_NO_WARNINGS
@@ -143,6 +145,127 @@ void VariableSizedArrays() {
         cout << arrays[x][y] << endl;
     }
 }
+
+/* Strings */
+void Strings() {
+    string a, b;
+    cin >> a >> b;
+
+    cout << a.size() << " " << b.size() << endl;
+    cout << a + b << endl;
+    cout << b[0] + a.substr(1) << " ";
+    cout << a[0] + b.substr(1) << endl;
+}
+
+/* StringStream */
+vector<int> parseInts(string str) {
+    stringstream ss(str);
+    vector<int> ints;
+    int input;
+    char ch;
+    while (ss >> input) {
+        ints.push_back(input);
+        ss >> ch;
+    }
+    return ints;
+}
+
+/* Struct */
+struct Student {
+    int age;
+    string first_name;
+    string last_name;
+    int standard;
+};
+
+/* Class */
+class Student {
+    private:
+        int age;
+        string first_name;
+        string last_name;
+        int standard;
+    public:
+        void set_age(int age) {
+            this->age = age;
+        }
+
+        void set_first_name(string first_name) {
+            this->first_name = first_name;
+        }
+
+        void set_last_name(string last_name) {
+            this->last_name = last_name;
+        }
+
+        void set_standard(int standard) {
+            this->standard = standard;
+        }
+
+        int get_age() {
+            return age;
+        }
+
+        string get_first_name() {
+            return first_name;
+        }
+
+        string get_last_name() {
+            return last_name;
+        }
+
+        int get_standard() {
+            return standard;
+        }
+
+        string to_string() {
+            return std::to_string(age) + "," + first_name + "," + last_name + "," + std::to_string(standard);
+        }
+};
+
+/* Classes and Objects */
+class Student {
+    private:
+        vector<int> scores = vector<int>(5);
+    public:
+        void input() {
+            for (int i = 0; i < 5; i++) {
+                cin >> scores[i];
+            }
+        }
+
+        int calculateTotalScore() {
+            int sum = 0;
+            for (int i = 0; i < 5; i++) {
+                sum += scores[i];
+            }
+
+            return sum;
+        }
+};
+
+/* Vector-Sort */
+void VectorSort() {
+    vector<int> v;
+    int size, input;
+
+    cin >> size;
+
+    for (int i = 0; i < size; i++) {
+        cin >> input;
+        v.push_back(input);
+    }
+
+    sort(v.begin(), v.end());
+
+    for (int i = 0; i < size; i++) {
+        cout << v[i] << " ";
+    }
+
+    cout << endl;
+}
+
+/* Vector-Erase */
 
 
 int main() {
