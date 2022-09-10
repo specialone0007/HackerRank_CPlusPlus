@@ -6,6 +6,8 @@
 #include <vector>
 #include <sstream>
 #include <algorithm>
+#include <set>
+#include <map>
 using namespace std;
 
 #define _CRT_SECURE_NO_WARNINGS
@@ -387,7 +389,7 @@ ostream& operator<<(ostream& Cout, Box& right) {
 }
 
 /* Lower Bound-STL */
-void LowerBoundSTL() { /* Write This Without Lower_Bound Function */
+void LowerBoundSTL() { /* Instead of lower_bound, we can use binary research */
     vector<int> arr;
     int n, input, q;
     cin >> n;
@@ -414,8 +416,70 @@ void LowerBoundSTL() { /* Write This Without Lower_Bound Function */
     }
 }
 
-/* C++ Class Templates */
+/* Sets-STL */
+void SetsSTL() {
+    set<int>s;
+    int size, type, value;
 
+    cin >> size;
+
+    for (int i = 0; i < size; i++) {
+        cin >> type >> value;
+        if (type == 1) {
+            s.insert(value);
+        }
+        else if (type == 2) {
+            if (s.find(value) != s.end()) {
+                s.erase(value);
+            }
+        }
+        else if (type == 3) {
+            if (s.find(value) != s.end()) {
+                cout << "Yes" << endl;
+            }
+            else {
+                cout << "No" << endl;
+            }
+        }
+    }
+}
+
+/* Maps-STL */
+void MapsSTL() {
+    map<string, int>m;
+    string key;
+    int size, type, value;
+
+    cin >> size;
+
+    for (int i = 0; i < size; i++) {
+        cin >> type >> key;
+        if (type == 1) {
+            cin >> value;
+            if (m.find(key) != m.end()) {
+                m[key] += value;
+            }
+            else {
+                m.insert(make_pair(key, value));
+            }
+        }
+        else if (type == 2) {
+            if (m.find(key) != m.end()) {
+                m.erase(key);
+            }
+        }
+        else if (type == 3) {
+            if (m.find(key) != m.end()) {
+                cout << m[key] << endl;
+            }
+            else {
+                cout << 0 << endl;
+            }
+        }
+    }
+}
+
+/* C++ Class Templates */
 struct optimiser {
     optimiser() {
         ios_base::sync_with_stdio(false);
@@ -446,5 +510,5 @@ public:
 
 
 int main() {
-	return 0;
+    return 0;
 }
