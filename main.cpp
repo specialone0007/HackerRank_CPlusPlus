@@ -171,7 +171,7 @@ vector<int> parseInts(string str) {
 }
 
 /* Struct */
-struct Student {
+struct Student1 {
     int age;
     string first_name;
     string last_name;
@@ -179,7 +179,7 @@ struct Student {
 };
 
 /* Class */
-class Student {
+class Student2 {
     private:
         int age;
         string first_name;
@@ -224,7 +224,7 @@ class Student {
 };
 
 /* Classes and Objects */
-class Student {
+class Student3 {
     private:
         vector<int> scores = vector<int>(5);
     public:
@@ -266,6 +266,183 @@ void VectorSort() {
 }
 
 /* Vector-Erase */
+void VectorErase() {
+    vector<int> v;
+    int size, input;
+
+    cin >> size;
+
+    for (int i = 0; i < size; i++) {
+        cin >> input;
+        v.push_back(input);
+    }
+
+    int loc, x, y;
+    cin >> loc >> x >> y;
+
+    v.erase(v.begin() + loc - 1);
+    v.erase(v.begin() + x - 1, v.begin() + y - 1);
+
+    cout << v.size() << endl;
+
+    for (int i = 0; i < v.size(); i++) {
+        cout << v[i] << " ";
+    }
+
+    cout << endl;
+}
+
+/* Overload Operators */
+class Complex {
+
+public:
+    int a, b;
+
+    void input(string s) {
+        int pos = s.find("+");
+        a = stoi(s.substr(0, pos));
+        b = stoi(s.substr(pos + 2));
+    }
+};
+
+Complex operator+(const Complex& left, const Complex& right) {
+    Complex result;
+    result.a = left.a + right.a;
+    result.b = left.b + right.b;
+    return result;
+}
+
+ostream& operator<<(ostream& Cout, const Complex& right) {
+    Cout << right.a << "+i" << right.b;
+    return Cout;
+}
+
+/* Print Pretty */
+void PrintPretty(double A, double B, double C) {
+    /* showbase: to add 0x */
+    cout << std::hex << std::left << std::showbase << std::nouppercase;
+    cout << (long long)(A) << endl;
+
+    /* showpos: shows positive sign, fixed: shows as a number not in scientific format */
+    cout << std::dec << std::right << std::setw(15) << std::setfill('_') << std::showpos << std::fixed << std::setprecision(2);
+    cout << B << endl;
+
+    /* */
+    cout << std::scientific << std::uppercase << std::noshowpos << std::setprecision(9);
+    cout << C << endl;
+}
+
+/* Box It! */
+class Box {
+private:
+    int l;
+    int b;
+    int h;
+public:
+    Box() {
+        this->l = 0;
+        this->b = 0;
+        this->h = 0;
+    }
+
+    Box(int l, int b, int h) {
+        this->l = l;
+        this->b = b;
+        this->h = h;
+    }
+
+    int getLength() {
+        return this->l;
+    }
+
+    int getBreadth() {
+        return this->b;
+    }
+
+    int getHeight() {
+        return this->h;
+    }
+
+    long long CalculateVolume() {
+        return (long long)(l) * (long long)(b) * (long long)(h);
+    }
+
+    bool operator<(Box & right) {
+        if(this->l < right.getLength()) {
+            return true;
+        }
+        if (this->l == right.getLength() && this->b < right.getBreadth()) {
+            return true;
+        }
+        if (this->l == right.getLength() && this->b == right.getBreadth() && this->h < right.getHeight()) {
+            return true;
+        }
+        return false;
+    }
+};
+
+ostream& operator<<(ostream& Cout, Box& right) {
+    Cout << right.getLength() << " " << right.getBreadth() << " " << right.getHeight();
+    return Cout;
+}
+
+/* Lower Bound-STL */
+void LowerBoundSTL() { /* Write This Without Lower_Bound Function */
+    vector<int> arr;
+    int n, input, q;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        cin >> input;
+        arr.push_back(input);
+    }
+
+    cin >> q;
+
+    for (int i = 0; i < q; i++) {
+        cin >> input;
+        auto lower = lower_bound(arr.begin(), arr.end(), input);
+
+        int index = lower - arr.begin();
+
+        if (input == arr[index]) {
+            cout << "Yes " << index + 1 << endl;
+        }
+        else {
+            cout << "No " << index + 1 << endl;
+        }
+
+    }
+}
+
+/* C++ Class Templates */
+
+struct optimiser {
+    optimiser() {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+    }
+};
+optimiser opt;
+
+template <class T>
+class AddElements {
+private:
+    T element;
+public:
+
+    AddElements(const T& right) {
+        this->element = right;
+    }
+
+    T add(const T& right) {
+        return this->element + right;
+    }
+
+    T concatenate(const T& right) {
+        return this->element + right;
+    }
+
+};
 
 
 int main() {
