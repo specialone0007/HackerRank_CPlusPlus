@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <set>
 #include <map>
+#include <stdexcept>
 using namespace std;
 
 #define _CRT_SECURE_NO_WARNINGS
@@ -526,6 +527,33 @@ private:
 ostream& operator<<(ostream& Cout, const Person& right) {
     Cout << "first_name=" << right.get_first_name() << ",last_name=" << right.get_last_name();
     return Cout;
+}
+
+/* Cpp exception handling */
+int largest_proper_divisor(int n) {
+    if (n == 0) {
+        throw invalid_argument("largest proper divisor is not defined for n=0");
+    }
+    if (n == 1) {
+        throw invalid_argument("largest proper divisor is not defined for n=1");
+    }
+    for (int i = n / 2; i >= 1; --i) {
+        if (n % i == 0) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+void process_input(int n) {
+    try {
+        int d = largest_proper_divisor(n);
+        cout << "result=" << d << endl;
+    }
+    catch (const invalid_argument& message) {
+        cout << message.what() << endl;
+    }
+    cout << "returning control flow to caller" << endl;
 }
 
 
