@@ -14,14 +14,14 @@ using namespace std;
 
 /* Say "Hello, World!" With C++ */
 void HelloWorld() {
-	cout << "Hello, World!" << endl;
+    cout << "Hello, World!" << endl;
 }
 
 /* Input and Output */
 void InputOutput() {
-	int a, b, c;
-	cin >> a >> b >> c;
-	cout << a + b + c << endl;
+    int a, b, c;
+    cin >> a >> b >> c;
+    cout << a + b + c << endl;
 
 }
 
@@ -41,7 +41,7 @@ void BasicDataTypes() {
 
 /* Conditional Statements */
 void ConditionalStatements(int n) {
-    string numbers[9] = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+    string numbers[9] = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
 
     if (n <= 9) {
         cout << numbers[n - 1] << endl;
@@ -54,7 +54,7 @@ void ConditionalStatements(int n) {
 /* For Loop */
 void ForLoop() {
     string numbers[9] = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
-    
+
     int a, b;
     cin >> a >> b;
 
@@ -63,7 +63,7 @@ void ForLoop() {
             cout << numbers[i - 1] << endl;
         }
         else if (i > 9) {
-            if (i%2 == 0)
+            if (i % 2 == 0)
             {
                 cout << "even" << endl;
             }
@@ -96,7 +96,7 @@ int max_of_four(int a, int b, int c, int d) {
 /* Pointer */
 void update(int* a, int* b) {
     int sum, absDiff;
-    
+
     sum = *a + *b;
     absDiff = abs(*a - *b);
 
@@ -109,7 +109,7 @@ void ArraysIntroduction() {
     int n;
     cin >> n;
 
-    int * arr = new int[n];
+    int* arr = new int[n];
     for (int i = 0; i < n; i++) {
         cin >> arr[i];
     }
@@ -130,12 +130,12 @@ void VariableSizedArrays() {
         vector<int> newVector;
         arrays.push_back(newVector);
         cin >> arrSize;
-        
+
         for (int j = 0; j < arrSize; j++) {
             cin >> val;
-            arrays[i].push_back(val); /* Important Thing I learnt: 
-                                      Push_Back is copy by value not reference therefore; 
-                                      I cannot use newVector.push_back(val) 
+            arrays[i].push_back(val); /* Important Thing I learnt:
+                                      Push_Back is copy by value not reference therefore;
+                                      I cannot use newVector.push_back(val)
                                       instead of arrays[i].push_back(val)*/
         }
     }
@@ -182,68 +182,68 @@ struct Student1 {
 
 /* Class */
 class Student2 {
-    private:
-        int age;
-        string first_name;
-        string last_name;
-        int standard;
-    public:
-        void set_age(int age) {
-            this->age = age;
-        }
+private:
+    int age;
+    string first_name;
+    string last_name;
+    int standard;
+public:
+    void set_age(int age) {
+        this->age = age;
+    }
 
-        void set_first_name(string first_name) {
-            this->first_name = first_name;
-        }
+    void set_first_name(string first_name) {
+        this->first_name = first_name;
+    }
 
-        void set_last_name(string last_name) {
-            this->last_name = last_name;
-        }
+    void set_last_name(string last_name) {
+        this->last_name = last_name;
+    }
 
-        void set_standard(int standard) {
-            this->standard = standard;
-        }
+    void set_standard(int standard) {
+        this->standard = standard;
+    }
 
-        int get_age() {
-            return age;
-        }
+    int get_age() {
+        return age;
+    }
 
-        string get_first_name() {
-            return first_name;
-        }
+    string get_first_name() {
+        return first_name;
+    }
 
-        string get_last_name() {
-            return last_name;
-        }
+    string get_last_name() {
+        return last_name;
+    }
 
-        int get_standard() {
-            return standard;
-        }
+    int get_standard() {
+        return standard;
+    }
 
-        string to_string() {
-            return std::to_string(age) + "," + first_name + "," + last_name + "," + std::to_string(standard);
-        }
+    string to_string() {
+        return std::to_string(age) + "," + first_name + "," + last_name + "," + std::to_string(standard);
+    }
 };
 
 /* Classes and Objects */
 class Student3 {
-    private:
-        vector<int> scores = vector<int>(5);
-    public:
-        void input() {
-            for (int i = 0; i < 5; i++) {
-                cin >> scores[i];
-            }
+private:
+    vector<int> scores = vector<int>(5);
+public:
+    void input() {
+        for (int i = 0; i < 5; i++) {
+            cin >> scores[i];
+        }
+    }
+
+    int calculateTotalScore() {
+        int sum = 0;
+        for (int i = 0; i < 5; i++) {
+            sum += scores[i];
         }
 
-        int calculateTotalScore() {
-            int sum = 0;
-            for (int i = 0; i < 5; i++) {
-                sum += scores[i];
-            }
-
-            return sum;
-        }
+        return sum;
+    }
 };
 
 /* Vector-Sort */
@@ -369,8 +369,8 @@ public:
         return (long long)(l) * (long long)(b) * (long long)(h);
     }
 
-    bool operator<(Box & right) {
-        if(this->l < right.getLength()) {
+    bool operator<(Box& right) {
+        if (this->l < right.getLength()) {
             return true;
         }
         if (this->l == right.getLength() && this->b < right.getBreadth()) {
@@ -507,6 +507,26 @@ public:
     }
 
 };
+
+/* Overloading Ostream Operator */
+class Person {
+public:
+    Person(const string& first_name, const string& last_name) : first_name_(first_name), last_name_(last_name) {}
+    const string& get_first_name() const {
+        return first_name_;
+    }
+    const string& get_last_name() const {
+        return last_name_;
+    }
+private:
+    string first_name_;
+    string last_name_;
+};
+
+ostream& operator<<(ostream& Cout, const Person& right) {
+    Cout << "first_name=" << right.get_first_name() << ",last_name=" << right.get_last_name();
+    return Cout;
+}
 
 
 int main() {
