@@ -556,6 +556,61 @@ void process_input(int n) {
     cout << "returning control flow to caller" << endl;
 }
 
+/* Hotel Prices */
+void hotel_prices() {
+    int n, bedrooms, bathrooms, total = 0;
+    cin >> n;
+
+    string type;
+
+    for (int i = 0; i < n; i++) {
+        cin >> type >> bedrooms >> bathrooms;
+        total += 50 * bedrooms + bathrooms * 100;
+        if (type == "apartment") {
+            total += 100;
+        }
+    }
+    cout << total << endl;
+}
+
+/* Operator Overloading */
+class Matrix {
+public:
+    vector<vector<int>> a;
+
+    Matrix operator + (Matrix const& right) {
+        vector<vector<int>> new_a;
+        for (int i = 0; i < a.size(); i++) {
+            vector<int> row;
+            for (int j = 0; j < a[0].size(); j++) {
+                row.push_back(a[i][j] + right.a[i][j]);
+            }
+            new_a.push_back(row);
+        }
+        Matrix result;
+        result.a = new_a;
+
+        return result;
+    }
+};
+
+/* Exceptional Server */
+void exceptional_server() {
+    /* try {
+        long long result = Server::compute(A, B);
+        cout << result << endl;
+    }
+    catch (const std::bad_alloc& e) {
+        cout << "Not enough memory" << endl;
+    }
+    catch (const std::exception& e) {
+        cout << "Exception: " << e.what() << endl;
+    }
+    catch (...) {
+        cout << "Other Exception" << endl;
+    }
+    */
+}
 
 int main() {
     return 0;
