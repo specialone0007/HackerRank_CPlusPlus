@@ -612,6 +612,67 @@ void exceptional_server() {
     */
 }
 
+/* Virtual Functions */
+
+class Person2 {
+protected:
+    string name;
+    int age;
+
+public:
+    virtual void getdata() {}
+    virtual void putdata() {}
+};
+
+class Professor : public Person2 {
+private:
+    int publications;
+    static int counter;
+    int cur_id;
+public:
+    Professor() { cur_id = ++counter; }
+
+    void getdata() override {
+        cin >> name >> age >> publications;
+    }
+
+    void putdata() override {
+        string output = name + " " + to_string(age) + " " + to_string(publications) + " " + to_string(cur_id);
+        cout << output << endl;
+    }
+};
+
+class Student : public Person2 {
+private:
+    vector<int> marks;
+    static int counter;
+    int cur_id;
+
+public:
+    Student() { cur_id = ++counter; }
+
+    void getdata() override {
+        int mark;
+        cin >> name >> age;
+        for (int i = 0; i < 6; i++) {
+            cin >> mark;
+            marks.push_back(mark);
+        }
+    }
+
+    void putdata() override {
+        int sum = 0;
+        for (auto& n : marks) sum += n;
+
+        string output = name + " " + to_string(age) + " " + to_string(sum)
+            + " " + to_string(cur_id);;
+        cout << output << endl;
+    }
+};
+
+int Professor::counter = 0;
+int Student::counter = 0;
+
 int main() {
     return 0;
 }
