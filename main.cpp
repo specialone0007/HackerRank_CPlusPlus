@@ -613,7 +613,6 @@ void exceptional_server() {
 }
 
 /* Virtual Functions */
-
 class Person2 {
 protected:
     string name;
@@ -672,6 +671,18 @@ public:
 
 int Professor::counter = 0;
 int Student::counter = 0;
+
+/* Inherited Code */
+class BadLengthException: public exception {
+public:
+    int n;
+
+    BadLengthException(int n) : n(n) {}
+
+    string what() {
+        return to_string(n);
+    }
+};
 
 int main() {
     return 0;
